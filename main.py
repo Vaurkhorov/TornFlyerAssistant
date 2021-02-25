@@ -1,14 +1,15 @@
 import requests
-import json
-import ast
 import pandas
 
 pandas.set_option('display.max_rows', None)
 pandas.set_option('display.max_columns', None)
 
-APIkey = "tbpgdzp1u2BoyAJg" #input("Enter your API key: ")
+APIkey = input("Enter your API key: ")
+print()
+print("Enter the user ID of the player who's bazaar info you'd like to check: ")
+userID = input("(leave blank if your own) ")
 
-response = requests.get("https://api.torn.com/user/2178000?selections=bazaar&key=" + APIkey)
+response = requests.get("https://api.torn.com/user/" + userID + "?selections=bazaar&key=" + APIkey)
 
 resList = response.json()["bazaar"]
 
